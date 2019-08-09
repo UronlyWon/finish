@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{%block content %}
+<head>
+<style>
+        @font-face {
+          font-family: 'BBTreeGR';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); 
+          font-weight: normal; font-style: normal; }
+        
+        body {
+          font-family: 'BBTreeGR', 'Raleway', 'sans-serif';
+          background-color: #fff;
+        }
+        </style>
+        </head>
+        
+    <div class="container" style="color:rgb(49, 182, 235);">
+    <br><br>
+    <h1 style="color:rgb(49, 182, 235);">"{{ search_term }} " 과 관련된 검색 결과입니다.</h1>
+    <br><br>
+    <div class="row">
+            <div class="container jumbotron" style="background-color:rgb(130, 205, 235); padding:15px;">
+              <div class="card">
+                <div class="card-body">
+                        {% if object_list %}
+                        {% for post in object_list %}
+                        {% autoescape off %}
+                <h2 class="card-title" ><a href="{% url 'detail' post.id %}" style="color:rgb(49, 182, 235);" >{{ post.title }}</a></h2>
+                  <p class="card-text">{{ post.pub_date }}</p>
+                  <p class="card-text">
+                      <p> {{ post.body }} </p>
+                      {% endautoescape %}
+                      {% endfor %}
+                  </p>
+                  {% elif search_term %}
+            <b><i>{{ search_term }}와 관련된 글이 없습니다 !</i></b>
+    
+        {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+{% endblock %}

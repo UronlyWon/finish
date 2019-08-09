@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+<title>Hang Out</title>
+<head>
+  <h1>게시글 작성하기</h1>
+</head>
+<body>
+  <script src="//cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+  <br />
+  <div class="container">
+    <form action=" {% url 'create' %}" method="POST">
+      {% csrf_token %}
+      {{ csrf_input }}
+      <h5>제목</h5>
+      <input placeholder="제목을 입력하세요." rows="200" cols="500" type="text" name="title" />
+      <br />
+      <br />
+      <h5>본문</h5>
+      <div class="input-group">
+        <textarea
+          config.htmlEncodeOutput="false"
+          placeholder="함께 hangout할 친구들을 찾아보세요!"
+          class="form-control"
+          id="p_content"
+          name="body"
+        ></textarea>
+        <script type="text/javascript">
+          CKEDITOR.replace('p_content', { height: 400 });
+        </script>
+        <script src="/ckfinder/ckfinder.js"></script>
+        <script type="text/javascript" src="<%=letzhangout %>/ckeditor/ckeditor.js"></script>
+      </div>
+      <br />
+      <br />
+      <input class="btn btn-dark" type="submit" value="제출하기" />
+    </form>
+  </div>
+</body>
+
+  {% endblock %}
+</body>

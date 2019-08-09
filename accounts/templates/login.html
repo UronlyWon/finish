@@ -1,0 +1,73 @@
+{% extends 'base.html' %} {% block content %}
+
+{% if error %}
+{{ error }}
+<br>
+<br>
+{% endif %}
+{% load socialaccount %}
+{% providers_media_js %}
+      <style>
+   body {
+          font-family: 'BBTreeGR', 'Raleway', 'sans-serif';
+        }
+</style>
+      <form method = "POST" action = "{%url 'login'%}" class="form-signin">
+        {% csrf_token %}
+        <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
+        <center><h1 class="h3 mb-3 " style="font-size: 30px; color:#FF607f; font-weight: bold;">Please Sign in</h1></center>
+        &nbsp;
+        <h3 style="font-size: 19px;">ID or Email address:</h3>
+        
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input name="username" type="text"class="form-control"  value="" style="font-size: 19px; color:#FF607f;">
+      <br><br>
+      <h3 style="font-size: 19px;">Password:</h3>
+      
+      <input name="password" type="password" class="form-control" value="" style="font-size: 19px;">
+      <br>
+      <br>       
+        <div class="checkbox mb-3">
+          <label> <input type="checkbox" value="remember-me"/> <p style="font-size: 19px; color:#FF607f; font-weight: bolder;">Remember me</p> </label>
+        </div>
+        <center><button class="btn btn-outline-danger" type="submit" style="width: 59em; font-size: 19px; height:39px;">Login</button></center>
+      </br>
+    </br>
+    {% if user.is_authenticated %}
+    <a href="/accounts/logout"><p style="font-size:22px;">로그아웃</p></a><br>
+    <p style=font-size:19px; font-weight:bolder;>{{user.username}} 님이 로그인 중<p>
+    
+    {% else %}
+    <a href="{% url 'signup' %}" class="btn btn-outline-danger" tabindex="-1" role="button" aria-disabled="true"> 
+    <p style="font-weight: bolder; font-size:17px; height:13px; color:#FF607f; width: 4em; ">회원가입</p> </a></br>
+  </br>
+    <div class="card">
+        <div class="card-body">
+          <center><p style="font-weight: bolder; font-size:19px;">다른 서비스 계정으로 가입 및 로그인하기</p></center>
+        <br>
+     <center>   
+    <div class="googlelogin">
+        <a href="{% provider_login_url 'google' %}">
+            <img src="/static/images/Loginwithgoogle.png"  width=200px;
+            height=auto; alt="LoginwithGOOGLE">
+        </a>
+    </div>
+  </br>
+    <div class="naverlogin">
+        <a href="{% provider_login_url 'naver' %}">
+            <img src="/static/images/LoginwithNAVER.png"     width=200px;
+            height=auto; alt="LoginwithNAVER">
+        </a>
+    </div>
+  </div>
+</div>
+</center>
+    <!--<button type="button" class="btn btn-outline-warning"> <a href=“https://kauth.kakao.com//oauth/authorize?client_id=334575" redirect_uri=response_type=code”" " tabindex="-1" role="button" aria-disabled="true">
+       kakao 로그인 </a> </button><br>-->
+    
+    {% endif %}
+        <center><p class="mt-5 mb-3 text-muted" style="font-weight:bolder;">&copy; DANKOOKUNIV_LikeLion_HangOut</p></center>
+      </form>
+    </body>
+
+      {% endblock %}

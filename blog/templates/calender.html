@@ -1,0 +1,468 @@
+<!-- {% extends 'base.html%} {% blockcontent %} -->
+
+<html>
+    <html lang="kr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Hangout 페스티벌 일정</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/letzhangout/blogproject/blog/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/letzhangout/blogproject/blog/static/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/letzhangout/blogproject/blog/static/css/fontAwesome.css">
+        <link rel="stylesheet" href="/letzhangout/blogproject/blog/static/css/hero-slider.css">
+        <link rel="stylesheet" href="/letzhangout/blogproject/blog/static/css/owl-carousel.css">
+        <link rel="stylesheet" href="/letzhangout/blogproject/blog/static/css/datepicker.css"> 
+        <link rel="stylesheet" href="/letzhangout/blogproject/blog/static/css/calender-infor.css">
+        <link rel="stylesheet" href="/letzhangout/blogproject/blog/static/css/templatemo-style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+
+        <script src="/static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+         <script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+         <script src="static/js/vendor/bootstrap.min.js"></script>
+    
+        <script src="static/js/datepicker.js"></script>
+        <script src="static/js/plugins.js"></script>
+        <script src="static/js/main.js"></script>
+        
+    </head>
+    
+    <body>
+ 
+        <div class="wrap">
+            <header id="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button id="primary-nav-button" type="button">Menu</button>
+                            <a href="index.html"><div class="logo">
+                                <img src="/letzhangout/blogproject/blog/static/images/logo.png" alt="Hangout">
+                            </div></a>
+                            <nav id="primary-nav" class="dropdown cf">
+                                <ul class="dropdown menu">
+                                    <!-- <li class='active'><a href="#">About</a></li>  -->
+                                    <li><a class="scrollTo" data-scrollTo="blog" href="#">페스티벌 정보</a></li>
+                                    <li><a class="scrollTo" data-scrollTo="services" href="#">친구 구하기</a></li>
+                                    <li><a class="scrollTo" data-scrollTo="contact" href="#">페스티벌 일정</a></li>
+                                    <li><a class="scrollTo" data-scrollTo="login" href="#">로그인</a></li>
+    
+                                    <form id="logout" method="POST" action="#">
+                                    <input type="hidden" />
+                                    </form>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+           
+            </header>
+        </div>   
+
+<section class="featured-places" id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h8 style="font-size: 45px; color:#FF607F;" > HangOut할 페스티벌 일정을 찾아보세요!</h8>
+                </div>
+            </div> 
+        </div> 
+    
+<!-- 
+     달력시작    -->
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+        <style type="text/css">
+        td {
+         width: 150px;
+         height: 60px;
+         text-align: center;
+         font-size: 20px;
+         font-family: 바탕;
+         border:2px dotted #AC58FA;
+    
+        }
+         
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+         
+         
+        <title>Calender</title>
+         
+        <script language="javascript" type="text/javascript">
+        var today = new Date(); // 오늘 날짜//지신의 컴퓨터를 기준으로
+        //today 에 Date객체를 넣어줌 //ex)5일  
+        function prevCalendar() {
+         
+         
+         today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+         buildCalendar(); // 현재 달 
+        }
+         
+        function nextCalendar() {
+         
+         
+         today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+         buildCalendar();
+        }
+         
+        function buildCalendar() {// 현재 달fur
+         var nMonth = new Date(today.getFullYear(), today.getMonth(), 1);  // 이번 달의 첫째 날
+         var lastDate = new Date(today.getFullYear(), today.getMonth()+1, 0); // 이번 달의 마지막 날
+         var tblCalendar = document.getElementById("calendar");     // 테이블 달력을 만들 테이블
+         var tblCalendarYM = document.getElementById("calendarYM");    // yyyy년 m월 출력할 곳
+         tblCalendarYM.innerHTML = today.getFullYear() + "년 " + (today.getMonth() + 1) + "월";  // yyyy년 m월 출력
+        // 기존 테이블에 뿌려진 줄, 칸 삭제
+         
+         
+         while (tblCalendar.rows.length > 2) {
+          tblCalendar.deleteRow(tblCalendar.rows.length - 1);
+         }
+         var row = null;
+         row = tblCalendar.insertRow();
+         var cnt = 0;
+        // 1일이 시작되는 칸을 맞추어 줌
+         for (i=0; i<nMonth.getDay(); i++) {
+          cell = row.insertCell();
+          cnt = cnt + 1;
+         }
+         
+         for (i=1; i<=lastDate.getDate(); i++) { 
+          cell = row.insertCell();
+          cell.innerHTML = i;
+          cnt = cnt + 1;
+          if (cnt%7 == 0)// 1주일이 7일 이므로
+           row = calendar.insertRow();// 줄 추가
+         }
+         
+        }
+         
+        </script>
+         
+        </head>
+        <body>
+        <table id="calendar" boarder="3" align="left">
+         <tr>
+             <td><label onclick="prevCalendar()"><</label></td>
+                <td colspan="5" align="left" id="calendarYM">yyyy년 m월</td>
+                <td><label onclick="nextCalendar()">>
+                   
+                </label></td>
+            </tr>
+            <tr>
+             <td align="left">일</td>
+             <td align="left">월</td>
+             <td align="left">화</td>
+            <td align="left">수</td>
+             <td align="left">목</td>
+             <td align="left">금</td>
+             <td align="left">토</td>
+           </tr>
+         
+         
+        </table>
+        <script language="javascript" type="text/javascript">
+        buildCalendar();
+        </script>
+        </body>
+        </html>
+    <!-- 요기까지 달력  -->
+
+        <div></div>
+        <div></div>
+
+&nbsp;&nbsp;
+
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="/letzhangout/blogproject/blog/static/images/featured_item_1.jpg" alt="">
+                        <div class="overlay-content">
+                        </div>
+                        <div class="date-content">
+                            <h6>15일</h6>
+                            <span>8월</span>
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4>워터밤 대전 2019</h4>
+                        <p>
+                          최고의 썸머 뮤직 페스티벌! 
+                            올 여름 워터밤 대전을 주목하라!
+                            </p>
+                        <div class="row">
+                            <div class="col-md-6 first-button">
+                                <div class="text-button">
+                                    <a href="#">함께할 친구 구하기</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-button">
+                                    <a href="https://booking.naver.com/booking/5/bizes/220262?area=bni">예매 정보 찾기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="/letzhangout/blogproject/blog/static/images/featured_item_2.jpg" alt="">
+                        <div class="overlay-content">
+                        </div>
+                        <div class="date-content">
+                            <h6>17일</h6>
+                            <span>8월</span>
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4>워터밤 대구 2019</h4>                        
+                        <p>  최고의 썸머 뮤직 페스티벌! 
+                                올 여름 워터밤 대구를 주목하라!</p>
+                        <div class="row">
+                            <div class="col-md-6 first-button">
+                                <div class="text-button">
+                                    <a href="#">함께할 친구 구하기</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-button">
+                                    <a href="https://booking.naver.com/booking/5/bizes/220264?area=bni">예매 정보 찾기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="/letzhangout/blogproject/blog/static/images/featured_item_4.jpg" alt="">
+                        <div class="overlay-content">
+                        
+                        </div>
+                        <div class="date-content">
+                            <h6>24일</h6>
+                            <span>8월</span>
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4>워터밤 광주 2019 </h4>                
+                        <p>최고의 썸머 뮤직 페스티벌 올 여름 워터밤 광주를 주목하라!
+                        </p>
+                        <div class="row">
+                            <div class="col-md-6 first-button">
+                                <div class="text-button">
+                                    <a href="#">함께할 친구 구하기</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-button">
+                                    <a href="https://booking.naver.com/booking/12/bizes/248247?area=bni">예매 정보 찾기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/letzhangout/blogproject/blog/static/images/featured_item_7.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>16일-17일</h6>
+                                <span>8월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4> 메가바운스 힙합 페스티벌 </h4>                
+                            <center><p>국내 최고의 힙합 아티스트 총 출동!</p></center>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="#">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="https://booking.naver.com/booking/12/bizes/252135?area=bni">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/letzhangout/blogproject/blog/static/images/featured_item_3.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>16-18일</h6>
+                                <span>8월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4>강원 락 페스티벌 2019 </h4>                
+                            <p>뜨거운 태양과 강렬한 음악 그리고 눈부신 젊음이 어우러진다!</p>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="#">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="https://booking.naver.com/booking/5/bizes/247278?area=bni">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="/letzhangout/blogproject/blog/static/images/featured_item_5.jpg" alt="">
+                        <div class="overlay-content">
+                        
+                        </div>
+                        <div class="date-content">
+                            <h6>31일-1일</h6>
+                            <span>8월/9월</span>
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4>썸데이 페스티벌 2019 </h4>                
+                        <p>난지 한강공원에서 펼쳐지는 낭만적인 2019 썸데이 페스티벌!</p>
+                        <div class="row">
+                            <div class="col-md-6 first-button">
+                                <div class="text-button">
+                                    <a href="#">함께할 친구 구하기</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-button">
+                                    <a href="https://booking.naver.com/booking/12/bizes/246615?area=bni">예매 정보 찾기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="/letzhangout/blogproject/blog/static/images/featured_item_6.jpg" alt="">
+                        <div class="overlay-content">
+                        
+                        </div>
+                        <div class="date-content">
+                            <h6>31일-1일</h6>
+                            <span>8월/9월</span>
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4> EDC KOREA 2019 </h4>                
+                        <center><p>지상 최고의 테마파크형 일렉트로닉 뮤직 페스티벌!</p></center>
+                        <div class="row">
+                            <div class="col-md-6 first-button">
+                                <div class="text-button">
+                                    <a href="#">함께할 친구 구하기</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-button">
+                                    <a href="https://mticket.interpark.com/Goods/GoodsInfo/info?GoodsCode=19000279">예매 정보 찾기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/letzhangout/blogproject/blog/static/images/featured_item_8.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>7-8일</h6>
+                                <span>9월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4>2019 스펙트럼 댄스 뮤직 페스티벌</h4>                
+                            <center><p>당신이 꿈꾸던 단 하나의 테마형 뮤직 페스티벌!</p></center>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="#">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="https://booking.naver.com/booking/12/bizes/225901">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/letzhangout/blogproject/blog/static/images/featured_item_9.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>7-8일</h6>
+                                <span>9월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4>2019 멜로디 포레서트 캠프</h4>                
+                            <center><p>음악 속으로 떠나는 가을빛 소풍!</p></center>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="#">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="http://ticket.yes24.com/Pages/Perf/Detail/Detail.aspx?IdPerf=34036&site_pid=cp511NPlay1">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</section>
+
+<!--{% endblock %}-->

@@ -1,0 +1,142 @@
+{% extends 'base.html' %} {% block content %}
+<head>
+  <title>회원가입 화면</title>
+
+  <style>
+    #wrap {
+      width: 530px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+     font-family: 'BBTreeGR', 'Raleway', 'sans-serif';
+
+    }
+  </style>
+</head>
+<!-- 왼쪽, 오른쪽 바깥여백을 auto로 주면 중앙정렬된다.  -->
+<div id="wrap">
+  {% if error %}
+  {{ error }}
+  <br />
+  <br />
+  {% endif %}
+  {% load socialaccount %}
+  {% providers_media_js %}
+
+    <fieldset style="width : 535px;
+    border-style: solid;
+    border-width: 3.5px;
+    border-color: darkgray;"
+    margin: 100;
+>
+    </center>
+</br>
+  <b><font size="7" color="skyblue">Hangout Sign up!</font></b>
+  </br></br>
+  
+  <form method="POST" action="{% url 'signup'%}">
+    {% csrf_token %} 
+
+    <p style="font-size:22px;">Username:</p>
+    <div style="font-size:22px;"><input name="username" type="text" value="" /></div>
+    </br>
+    <p style="font-size:22px;">Password:</p>
+    <div style="font-size:22px;"><input name="password1" type="password" value="" /></div>
+    </br>
+    <p style="font-size:22px;">Confirm Password:</p>
+    <div style="font-size:22px;"><input name="password2" type="password" value="" /></div>
+    </br>
+<div style="font-size:17px; color:gray; font-weight:bolder;"><input type="submit" value="가입" /></div>
+</br>
+    <!---<tr>
+            <td id="title">이름</td>
+            <td>
+              <input type="text" name="name" maxlength="40" />
+            </td>
+          </tr>
+
+          <tr>
+            <td id="title">성별</td>
+            <td>
+              <input type="radio" name="gender" value="남" checked />남
+              <input type="radio" name="gender" value="여" checked />여
+            </td>
+          </tr>
+
+          <tr>
+            <td id="title">생일</td>
+            <td>
+              <input type="text" name="birth_yy" maxlength="4" placeholder="년(4자)" size="6" />
+              <select name="birth_mm">
+                <option value="">월</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <input type="text" name="birth_dd" maxlength="2" placeholder="일" size="4" />
+            </td>
+          </tr>
+
+          <tr>
+            <td id="title">이메일</td>
+            <td>
+              <input type="text" name="email_1" maxlength="30" />@
+              <select name="email_2">
+                <option>naver.com</option>
+                <option>daum.net</option>
+                <option>gmail.com</option>
+                <option>nate.com</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td id="title">휴대전화</td>
+            <td>
+              <input type="text" name="phone" />
+            </td>
+          </tr>
+          <tr>
+            <td id="title">주소</td>
+            <td>
+              <input type="text" size="50" name="address" />
+            </td>
+          </tr>-->
+    <br />
+
+  <div class="card">
+      <div class="card-body">
+          <b><font size="4" color="gray">다른 서비스 계정으로 가입 및 로그인하기</b>
+      </br></br>
+  <div class="googlelogin">
+      <a href="{% provider_login_url 'google' %}">
+          <img src="/static/images/Loginwithgoogle.png"  width=212px;
+          height=auto; alt="LoginwithGOOGLE">
+      </a>
+  </div>
+</br>
+  <div class="naverlogin">
+      <a href="{% provider_login_url 'naver' %}">
+          <img src="/static/images/LoginwithNAVER.png"     width=212px;
+          height=auto; alt="LoginwithNAVER">
+      </a>
+  </div>
+</div>
+</div>
+</br>
+    <a href="{% url 'terms' %}"><p style="font-weight: bolder; font-size: 17px;">서비스이용약관</p></a>
+  </form>
+  <h5 style="font-size: 17px; font-weight: bolder;">이미 계정이 있으신가요? <a href="{% url 'login' %}">로그인</a>하기</h5>
+  </br>
+</div>
+</fieldset>
+{% endblock %}

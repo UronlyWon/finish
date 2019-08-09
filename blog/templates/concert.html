@@ -1,0 +1,368 @@
+{% extends 'base.html' %} {% block content %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Hangout 콘서트 일정&정보</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/letz/letzhangout/blogproject/blog/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/letz/letzhangout/blogproject/blog/static/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/letz/letzhangout/blogproject/blog/static/css/fontAwesome.css">
+        <link rel="stylesheet" href="/letz/letzhangout/blogproject/blog/static/css/hero-slider.css">
+        <link rel="stylesheet" href="/letz/letzhangout/blogproject/blog/static/css/owl-carousel.css">
+        <link rel="stylesheet" href="/letz/letzhangout/blogproject/blog/static/css/datepicker.css"> 
+        <link rel="stylesheet" href="/letz/letzhangout/blogproject/blog/static/css/calender-infor.css">
+        <link rel="stylesheet" href="/letz/letzhangout/blogproject/blog/static/css/templatemo-style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+
+        <script src="/static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+         <script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+         <script src="static/js/vendor/bootstrap.min.js"></script>
+    
+        <script src="static/js/datepicker.js"></script>
+        <script src="static/js/plugins.js"></script>
+        <script src="static/js/main.js"></script>
+        
+    </head>
+    
+      <style>
+   body {
+          font-family: 'BBTreeGR', 'Raleway', 'sans-serif';
+        }
+</style>
+
+    <body>
+
+<section class="featured-places" id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h8 style="font-size: 40px; color:#FF607F;" >  Let's HangOut_CONCERT  </h8>
+
+                </div>
+            </div> 
+        </div> 
+<div class="submit-form">
+        <form id="form-submit" action="" method="get">
+            <div class="row">
+                <div class="col-md-3 first-item">
+                    <fieldset>
+                        <input name="name" type="text" class="form-control" id="name" placeholder="콘서트 이름" required="">
+                    </fieldset>
+                </div>
+                <div class="col-md-3 second-item">
+                    <fieldset>
+                        <input name="location" type="text" class="form-control" id="location" placeholder="지역 이름" required="">
+                    </fieldset>
+                </div>
+                <div class="col-md-3 third-item">
+                    <fieldset>
+                        <select required name='category' onchange='this.form()'>
+                            <option value="">카테고리 선택</option>
+                            <option value="Shops">페스티벌</option>
+                            <option value="Restaurants">콘서트</option>
+                    
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset>
+                        <button type="submit" id="form-submit" class="btn">검색하기</button>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </div>
+</br></br></br>
+
+
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="/static/images/featured_item_10.jpg" alt="">
+                        <div class="overlay-content">
+                        </div>
+                        <div class="date-content">
+                            <h6>9일-1일</h6>
+                            <span>8월/9월</span>
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4>NELL CLUB CONCERT 2019</h4>                        
+                        <p style="text-align:center">4주간 진행되는 ‘NELL CLUB CONCERT 2019’</p>
+                        <div class="row">
+                            <div class="col-md-6 first-button">
+                                <div class="text-button">
+                                    <a href="{% url 'home' %}">함께할 친구 구하기</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-button">
+                                    <a href="http://ticket.hanatour.com/Pages/Perf/Detail/Detail.aspx?IdPerf=36748&n_media=27758&n_query=NELLCLUBCONCERT2019&n_rank=1&n_ad_group=grp-a001-01-000000011402851&n_ad=nad-a001-01-000000065689687&n_keyword_id=nkw-a001-01-000002092900082&n_keyword=NELLCLUBCONCERT2019&n_campaign_type=1">예매 정보 찾기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                    
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/static/images/featured_item_11.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>18일</h6>
+                                <span>8월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4>2019 미스트롯 라스트 콘서트</h4>                        
+                            <p style="text-align:center"> 미스트롯 수상자들의 흥겨운 무대!</p>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="{% url 'home' %}">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="http://ticket.interpark.com/gate/TPGate.asp?Where=Naver&GPage=http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GoodsCode=19010846&maxprice=110000&NaPm=ct%3Djz3v4h3s%7Cci%3D76f9972ee154f9df802ba50ee5200a762efea424%7Ctr%3Dsls%7Csn%3D115%7Chk%3D8f1ebf983b23c9c640b9ee2384648b2a4deef042">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="/static/images/featured_item_12.jpg" alt="">
+                        <div class="overlay-content">
+                        
+                        </div>
+                        <div class="date-content">
+                            <h6>27일</h6>
+                            <span>8월</span>
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4>X1엑스원 PREMIER SHOW CON</h4>                
+                        <p>쇼케이스와 콘서트가 결합된 X1의 정식 데뷔무대!</p>
+                        <div class="row">
+                            <div class="col-md-6 first-button">
+                                <div class="text-button">
+                                    <a href="{% url 'home' %}">함께할 친구 구하기</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-button">
+                                    <a href="">예매 정보 미확인</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/static/images/featured_item_13.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>31일-1일</h6>
+                                <span>8월-9월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4> 잔나비 'Fantastic old-fashioned'</h4>                
+                            <p style="text-align:center">‘믿고 보는 공연 강자’ 그룹사운드 잔나비!</p>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="{% url 'home' %}">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="http://cr2.shopping.naver.com/adcrNoti.nhn?x=WlsyvsGirpSrb4wTZsCL%2B%2F%2F%2F%2Fw%3D%3DsGC%2FZkCHP7MZLGyFCMJemPg%2Fm67u6O3pa6d2rxTwxspJ%2B5QZV5na6RLBkXLzBxR5KP2wT2JNECGrQYRyaLa3Cs5Lj%2BH77lx%2FuGMetlS1YQLJTTnDoMmMpuPJ7Pcv1odQLb6iNJf1WC5V71p%2BDr7RvNnlfROjkwmbeD2Ehk3YIyByFoOjujvAz0JlxD4gF4bl7W35TrOUdyfTpRPuUyOh4myCpjECqxZ4YCEUrOD9xDWkgsRcFDYgsCtceImBfp9sU%2BMtPkauamPYInRuBDDneezKDDAZzO%2FHaUo0XMlEHN%2FyqDq2sLUU5cyF6UD8AcMj6%2BD9L6L202Q9%2BrNrqSTsv5mjlInynB01puiDUXHObi1RV1kMa66vVGLyWqkWOIvyn%2BPIN2Yl5CeAW6flbQHJZI2ID3frhOJwasLHUZZLNENHAjJcM7lrGhZzWFgxLb9ykQqyLKsBE6QxSvqyaZ3VBxIYlFAdf1OFsetsPTCIBnAu5qGVRb2qIkbr1EpNO7z7mqM5BMAgYP3wjSGiY3Was2v56smWWbuL4eKqjKDxHm361aYi5f1n8RW2A40jTXL1%2F2aiLWNQMry7qTDJk55h%2FtUBC%2BhfqjY%2Fi%2BRYS5gQoUiXRX%2BQXSd6C%2B9nCny2%2BNOmqfDcrgEDkJuTi4aS5pzQnKIeR0HX2C%2BylRxrGjZBU8X78WRCPNSCXZGYHV%2F2qAlxFq2ug%2BbNPJLhlbAIjvVPG%2FzfPVblUEc5gWc%2BgIJTSWOftZoD5XGY%2F1qWhMZLZXhhv%2By3La1tziJGxpsW6ppVUiUrJmkfdcdqR8216snxmFctwWrvmvckfuT7K6Eia%2FSWW5zI1DxzobE0Xz8c%2FheSVrAbLjR3JqKV%2FXfogov7a8y7z7cps5jhZto4ACeDr3BWgzm7Z%2F3W%2B8tddcEPRTHq%2F3A%3D%3D&nv_mid=20533576125&cat_id=50001691">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/static/images/featured_item_14.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>15-16일</h6>
+                                <span>8월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4 style="text-align:center">2019 K-WORLD FESTA 개막공연</h4>                
+                            <p style="text-align:center">K-POP 아티스트들이 총 출동!</p>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="{% url 'home' %}">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="https://booking.naver.com/booking/5/bizes/247278?area=bni">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/static/images/featured_item_15.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>28일</h6>
+                                <span>9월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4 style="text-align:center">2019 윤종신 콘서트 '이방인'-서울</h4>                
+                            <p style="text-align:center">월간 윤종신 설렘 가득한 예고편!</p>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="{% url 'home' %}">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GoodsCode=19011348">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/static/images/featured_item_17.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>17일</h6>
+                                <span>8월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4 style="text-align:center">싸이 흠뻑쇼 SUMMERSWAG 2019</h4>                
+                            <p style="text-align:center">싸이와 함께 흠뻑 여름을 즐길 사람 모여라!</p>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="{% url 'home' %}">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GoodsCode=19008420">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="/static/images/featured_item_18.jpg" alt="">
+                            <div class="overlay-content">
+                            </div>
+                            <div class="date-content">
+                                <h6>17일</h6>
+                                <span>8월</span>
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4 style="text-align:center">2019 슈퍼밴드 콘서트 - 부산</h4>                
+                            <p style="text-align:center">슈퍼밴드의 감동을 라이브로 만나는 단 한번의 기회!</p>
+                            <div class="row">
+                                <div class="col-md-6 first-button">
+                                    <div class="text-button">
+                                        <a href="{% url 'home' %}">함께할 친구 구하기</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-button">
+                                        <a href="https://booking.naver.com/booking/12/bizes/253589?area=bni">예매 정보 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="/static/images/featured_item_16.jpg" alt="">
+                        <div class="overlay-content">
+                        
+                        </div>
+                        <div class="date-content">
+                            <h6>24일</h6>
+                            <span>8월</span>
+                        </div>
+                    </div>
+                    <div class="down-content">
+                        <h4>2019 김연자 라이브 콘서트-부산 </h4
+                            >                
+                        <p style="text-align:center">트로트로 대중들을 사로잡은 김연자의 콘서트!</p>
+                        <div class="row">
+                            <div class="col-md-6 first-button">
+                                <div class="text-button">
+                                    <a href="{% url 'home' %}">함께할 친구 구하기</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-button">
+                                    <a href="https://booking.naver.com/booking/12/bizes/246241?area=bni">예매 정보 찾기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+</body>
+</html>
+ 
+    {% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %} 
+{% block content %}
+<style>
+@font-face {
+  font-family: 'BBTreeGR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); 
+  font-weight: normal; font-style: normal; }
+
+body {
+  font-family: 'BBTreeGR', 'Raleway', 'sans-serif';
+  background-color: #fff;
+}
+</style>
+
+  </head>
+  <body>
+    <div class="container">
+      <br/>
+      <h2 style="font-size:30px;">Let's HangOut NOW!</h2>
+      <br>
+      <h5 style="font-size:20px;  color:#FF607f;">지금 바로 당신과 함께할 동행을 구해보세요!</h5>
+      <br>    
+      <div id = "content">
+          <form action='search' method="post"> {% csrf_token %}
+              <a href="{% url 'create' %}" class="btn btn-outline-dark btn-lg"
+              style="font-size:15px;">게시글 작성하기</a>
+              <input type="text" name="search_word" style="height:30px; width:250px;">
+              <input type="submit" value="키워드로 검색하기" style="height:30px; width:120px; font-size:13px;">              
+          </form>         
+        </div>
+      <br/>
+      {% for blog in posts %}
+      
+      <div class="row">
+        <div class="container">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title" style="font-size:22px;">{{ blog.title }}</h4>
+              <p class="card-text">{{ blog.pub_date }}</p>
+              <p class="card-text">
+                  {% autoescape off %}
+                    {{ blog.summary }}
+                  {% endautoescape %}
+              <a href="{% url 'detail' blog.id %}" class="btn btn-outline-dark"  style="font-size:13px;">글 자세히 보기</a>
+              
+              <h6> <script id="dsq-count-scr" src="//http-127-0-0-1-8000-blog-4.disqus.com/count.js" async></script>
+                <span class="disqus-comment-count" data-disqus-identifier="article_1_identifier">
+                  <br>
+
+                <a href="http://127.0.0.1:8000/blog/{{forloop.counter}}/#disqus_thread" disabled="true"
+                 >댓글</a></h6>
+                </span>
+              </p>
+              <a href= "{% url 'delete' blog.id %}"> 삭제하기 </a>
+              <a href= "{% url 'update' blog.id %}"> 수정하기 </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br/>
+      {% endfor %}
+      
+    </div>
+   
+    <br><br>
+  
+    
+    <nav aria-label="Page navigation example"  display= "table-cell" float="none">
+      <ul class="pagination">
+        <li class="page-item">
+            {%if posts.has_previous%}
+          <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {%endif%}
+        <span>{{posts.number}}</span>
+        <span>of</span>
+        <span>{{posts.paginator.num_pages}}</span>
+            {%if posts.has_next%}
+          <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+          {%endif%}
+        </li>
+      </ul>
+    </nav>
+
+
+    </body>
+    
+  <footer class="blog-footer">
+  <p>Made by team 'Hangout' from likelion</p>
+    </footer>
+{% endblock %}
+
