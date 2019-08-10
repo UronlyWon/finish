@@ -25,13 +25,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ['*']~
-EMAIL_HOST = "smtp.gmail.com" 
-EMAIL_PORT = 587 
-EMAIL_HOST_USER = "uronlywon@gmail.com" 
-EMAIL_HOST_PASSWORD = "?0109spdh?" 
-EMAIL_USE_TLS = True
-
 # Application definition
 
 INSTALLED_APPS = [
