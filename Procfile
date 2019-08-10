@@ -1,1 +1,1 @@
-web: gunicorn letzhangout.wsgi --log-file -
+web: gunicorn blogproject.wsgi --log-file -
